@@ -47,7 +47,7 @@
 	
  <profiles>
 	 <profile>
-		 <id>dev</id>
+		 <id>priya</id>
 			 <properties>
 				 <tomcat.url>http://13.127.99.164:8080/manager/text</tomcat.url>
 				  <tomcat.username>admin</tomcat.username>
@@ -56,7 +56,7 @@
 		 </profile>
 
 	  <profile>
-		 <id>qa</id>
+		 <id>priya</id>
 			 <properties>
 				 <tomcat.url>http://13.127.99.164:8081/manager/text</tomcat.url>
 				  <tomcat.username>admin</tomcat.username>
@@ -65,7 +65,7 @@
 		 </profile>
 
  <profile>
-		 <id>prod</id>
+		 <id>priya</id>
 			 <properties>
 				 <tomcat.url>http://13.127.99.164:8082/manager/text</tomcat.url>
 				  <tomcat.username>admin</tomcat.username>
