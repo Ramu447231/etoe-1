@@ -1,47 +1,55 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>MyEcommerceGroup</groupId>
     <artifactId>MyEcommerceArtifact</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
+    <version>1.0-SNAPSHOT</version>
     <name>Simple Ecommerce Maven Webapp</name>
 
-    <!-- Repo for deployment -->
+    <!-- Java 17 Compatibility -->
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Will be overridden by profiles -->
+        <tomcat.url>http://3.101.66.255:8080/manager/text</tomcat.url>
+        <tomcat.username>admin</tomcat.username>
+        <tomcat.password>admin</tomcat.password>
+    </properties>
+
+    <!-- Artifactory Upload -->
     <distributionManagement>
         <repository>
             <id>central</id>
+            <name>Internal Artifactory Release Repo</name>
             <url>http://3.110.223.194:8081/artifactory/etoe</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
+            <name>Internal Artifactory Snapshot Repo</name>
             <url>http://3.110.223.194:8081/artifactory/etoe</url>
         </snapshotRepository>
     </distributionManagement>
 
-
-    <!-- Dependencies -->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
-
-    <!-- Build Plugins -->
     <build>
         <finalName>Ecomm</finalName>
-
         <plugins>
 
-            <!-- NEW WAR plugin compatible with Java 17 -->
+            <!-- Modern WAR Plugin (Fixes your error) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -65,8 +73,7 @@
         </plugins>
     </build>
 
-
-    <!-- Profiles for 8081, 8082, 8083 -->
+    <!-- ---------- PROFILES FOR PORT 8081, 8082, 8083 ---------- -->
     <profiles>
 
         <profile>
