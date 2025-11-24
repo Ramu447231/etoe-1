@@ -47,27 +47,27 @@
 	
  <profiles>
 	 <profile>
-		 <id>priya</id>
+		 <id>priya:8081</id>
 			 <properties>
-				 <tomcat.url>http://13.127.99.164:8080/manager/text</tomcat.url>
+				 <tomcat.url>http://3.101.66.255:8081/manager/text</tomcat.url>
 				  <tomcat.username>admin</tomcat.username>
 				  <tomcat.password>admin</tomcat.password>
 			 </properties>
 		 </profile>
 
 	  <profile>
-		 <id>priya</id>
+		 <id>priya:8082</id>
 			 <properties>
-				 <tomcat.url>http://13.127.99.164:8081/manager/text</tomcat.url>
+				 <tomcat.url>http://3.101.66.255:8082/manager/text</tomcat.url>
 				  <tomcat.username>admin</tomcat.username>
 				  <tomcat.password>admin</tomcat.password>
 			 </properties>
 		 </profile>
 
  <profile>
-		 <id>priya</id>
+		 <id>priya:8083</id>
 			 <properties>
-				 <tomcat.url>http://13.127.99.164:8082/manager/text</tomcat.url>
+				 <tomcat.url>http://3.101.66.255:8083/manager/text</tomcat.url>
 				  <tomcat.username>admin</tomcat.username>
 				  <tomcat.password>admin</tomcat.password>
 			 </properties>
