@@ -1,79 +1,101 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>MyEcommerceGroup</groupId>
-	<artifactId>MyEcommerceArtifact</artifactId>
-	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>Simple Ecomerce Maven Webapp</name>
-	<url>http://maven.apache.org</url>
-	<distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>ip-172-31-10-127.ap-south-1.compute.internal-releases</name>
-        <url>http://3.110.223.194:8081/artifactory/etoe</url>
-    </repository>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>ip-172-31-10-127.ap-south-1.compute.internal-snapshots</name>
-        <url>http://3.110.223.194:8081/artifactory/etoe</url>
-    </snapshotRepository>
-</distributionManagement>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-	<build>
-		<finalName>Ecomm</finalName>
-		<plugins>
-			<plugin> 
-				<groupId>org.apache.tomcat.maven</groupId> 
-				<artifactId>maven-war-plugin</artifactId> 
-				<version>3.3.2</version> 
-				<configuration> 
-					 <url>http://3.101.66.255:8080/manager/text</url>
-					<server>apache-tomcat</server> 
-					<username>admin</username>
-					<password>admin</password>
-					<path>/Ecomm</path> 
-				</configuration> 
-			</plugin>
-		</plugins>
-	</build>
-	
- <profiles>
-	 <profile>
-		 <id>priya:8081</id>
-			 <properties>
-				 <tomcat.url>http://3.101.66.255:8081/manager/text</tomcat.url>
-				  <tomcat.username>admin</tomcat.username>
-				  <tomcat.password>admin</tomcat.password>
-			 </properties>
-		 </profile>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/maven-v4_0_0.xsd">
 
-	  <profile>
-		 <id>priya:8082</id>
-			 <properties>
-				 <tomcat.url>http://3.101.66.255:8082/manager/text</tomcat.url>
-				  <tomcat.username>admin</tomcat.username>
-				  <tomcat.password>admin</tomcat.password>
-			 </properties>
-		 </profile>
+    <modelVersion>4.0.0</modelVersion>
 
- <profile>
-		 <id>priya:8083</id>
-			 <properties>
-				 <tomcat.url>http://3.101.66.255:8083/manager/text</tomcat.url>
-				  <tomcat.username>admin</tomcat.username>
-				  <tomcat.password>admin</tomcat.password>
-			 </properties>
-		 </profile>
+    <groupId>MyEcommerceGroup</groupId>
+    <artifactId>MyEcommerceArtifact</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
+    <name>Simple Ecomerce Maven Webapp</name>
 
-</profiles>
-	
+    <!-- Artifactory Deployment -->
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>internal-releases</name>
+            <url>http://3.110.223.194:8081/artifactory/etoe</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>internal-snapshots</name>
+            <url>http://3.110.223.194:8081/artifactory/etoe</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Build Section -->
+    <build>
+        <finalName>Ecomm</finalName>
+
+        <plugins>
+
+            <!-- Correct WAR Plugin (Fixes your error) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+
+            <!-- Correct Tomcat Plugin for Deploy -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://3.101.66.255:8080/manager/text</url>
+                    <server>apache-tomcat</server>
+                    <username>admin</username>
+                    <password>admin</password>
+                    <path>/Ecomm</path>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <!-- Multiple Tomcat Profiles -->
+    <profiles>
+
+        <profile>
+            <id>priya:8081</id>
+            <properties>
+                <tomcat.url>http://3.101.66.255:8081/manager/text</tomcat.url>
+                <tomcat.username>admin</tomcat.username>
+                <tomcat.password>admin</tomcat.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>priya:8082</id>
+            <properties>
+                <tomcat.url>http://3.101.66.255:8082/manager/text</tomcat.url>
+                <tomcat.username>admin</tomcat.username>
+                <tomcat.password>admin</tomcat.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>priya:8083</id>
+            <properties>
+                <tomcat.url>http://3.101.66.255:8083/manager/text</tomcat.url>
+                <tomcat.username>admin</tomcat.username>
+                <tomcat.password>admin</tomcat.password>
+            </properties>
+        </profile>
+
+    </profiles>
+
 </project>
