@@ -17,13 +17,11 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Default Tomcat Credentials -->
         <tomcat.url>http://3.101.66.255:8080/manager/text</tomcat.url>
         <tomcat.username>admin</tomcat.username>
         <tomcat.password>admin</tomcat.password>
     </properties>
 
-    <!-- Artifactory -->
     <distributionManagement>
         <repository>
             <id>central</id>
@@ -38,8 +36,6 @@
     </distributionManagement>
 
     <dependencies>
-
-        <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -47,22 +43,18 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Servlet API (Java 17 compatible) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>
         <finalName>Ecomm</finalName>
 
         <plugins>
-
-            <!-- Java 17 Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -72,14 +64,12 @@
                 </configuration>
             </plugin>
 
-            <!-- Updated WAR Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
             </plugin>
 
-            <!-- Tomcat Deployment Plugin -->
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -91,20 +81,16 @@
                     <path>/Ecomm</path>
                 </configuration>
             </plugin>
-
         </plugins>
-
     </build>
 
-    <!-- ----------- PROFILES (8081 / 8082 / 8083) ----------- -->
+    <!-- PROFILE CONFIG -->
     <profiles>
 
         <profile>
             <id>priya-8081</id>
             <properties>
                 <tomcat.url>http://3.101.66.255:8081/manager/text</tomcat.url>
-                <tomcat.username>admin</tomcat.username>
-                <tomcat.password>admin</tomcat.password>
             </properties>
         </profile>
 
@@ -112,8 +98,6 @@
             <id>priya-8082</id>
             <properties>
                 <tomcat.url>http://3.101.66.255:8082/manager/text</tomcat.url>
-                <tomcat.username>admin</tomcat.username>
-                <tomcat.password>admin</tomcat.password>
             </properties>
         </profile>
 
@@ -121,8 +105,6 @@
             <id>priya-8083</id>
             <properties>
                 <tomcat.url>http://3.101.66.255:8083/manager/text</tomcat.url>
-                <tomcat.username>admin</tomcat.username>
-                <tomcat.password>admin</tomcat.password>
             </properties>
         </profile>
 
